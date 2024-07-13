@@ -23,7 +23,7 @@ const createMyRestaurant = async (req: Request, res: Response) => {
 
     if (existingRestaurant) {
       return res
-        .status(409)
+        .status(409)//duplicate
         .json({ message: "User restaurant already exists" });
     }
 
@@ -123,7 +123,7 @@ const uploadImage = async (file: Express.Multer.File) => {
   const base64Image = Buffer.from(image.buffer).toString("base64");
   const dataURI = `data:${image.mimetype};base64,${base64Image}`;
 
-  const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);
+  const uploadResponse = await cloudinary.v2.uploader.upload(dataURI);//upload post image and get url from
   return uploadResponse.url;
 };
 

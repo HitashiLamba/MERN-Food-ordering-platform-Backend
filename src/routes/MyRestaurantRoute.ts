@@ -30,12 +30,13 @@ router.patch(
 
 router.get("/", jwtCheck, jwtParse, MyRestaurantController.getMyRestaurant);
 
+//api/my/restaurant
 router.post(
   "/",
-  upload.single("imageFile"),
+  upload.single("imageFile"),//check req body for image file property
   validateMyRestaurantRequest,
-  jwtCheck,
-  jwtParse,
+  jwtCheck,//check token
+  jwtParse,//take token details
   MyRestaurantController.createMyRestaurant
 );
 
